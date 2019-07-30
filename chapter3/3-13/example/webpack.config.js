@@ -7,17 +7,25 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: 'avery_[chunkhash:8].js'
+        filename: 'avery_[chunkhash:8].js',
+        // libraryTarget: 'commonjs2'
     },
     module: {
         rules: [
             {
-                test: /.js$/,
-                use: ['babel-loader'],
-                exclude: path.resolve(__dirname, './node_modules')
+                test: /\.js$/,
+                include: path.resolve(__dirname, './node_modules/avery-webpack/lib'),
+                use: ['source-map-loader'],
+                enforce: 'pre'
             },
             {
-                test: /.css$/,
+                test: /\.js$/,
+                use: ['babel-loader?cacheDirectory'],
+                exclude: path.resolve(__dirname, './node_modules'),
+                include: path.resolve(__dirname, 'src')
+            },
+            {
+                test: /\.css$/,
                 use: ExtractTextPlugin.extract({
                     use: ['css-loader']
                 })
@@ -33,5 +41,9 @@ module.exports = {
             filename: 'index.html',
             requires: ['index']
         })
-    ]
+    ],
+    resolve: {
+        modules: [path.resolve(__dirname, 'node_modules')]
+    },
+    devtool: 'source-map' // 输出 source-map 方便直接调试 ES6 源码
 }
