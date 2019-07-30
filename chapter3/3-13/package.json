@@ -1,0 +1,34 @@
+{
+  "name": "avery-webpack",
+  "version": "1.0.3",
+  "description": "",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "pub": "npm publish"
+  },
+  "keywords": [
+    "webpack",
+    "npm",
+    "package"
+  ],
+  "author": "Avery",
+  "license": "ISC",
+  "jsnext:main": "src/index.js",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^3.1.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "web-webpack-plugin": "^1.11.0",
+    "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
